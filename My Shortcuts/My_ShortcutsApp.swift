@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct My_ShortcutsApp: App {
-//    @StateObject var procedure = Procedure()
+    @StateObject var procedure = Procedure()
     
     var body: some Scene {
         WindowGroup {
-            TestEditModeCustomRelocate()
-//                .environmentObject(procedure)
+            ContentView()
+                .environmentObject(procedure)
         }
     }
 }

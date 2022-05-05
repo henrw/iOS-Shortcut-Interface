@@ -15,13 +15,12 @@
 		935C57442817B44C0008A870 /* My_ShortcutsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C57432817B44C0008A870 /* My_ShortcutsUITests.swift */; };
 		935C57462817B44C0008A870 /* My_ShortcutsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C57452817B44C0008A870 /* My_ShortcutsUITestsLaunchTests.swift */; };
 		935C5759281847DB0008A870 /* TextBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C5758281847DB0008A870 /* TextBlock.swift */; };
-		935C575B28188E940008A870 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C575A28188E940008A870 /* TestView.swift */; };
 		935C575D281891380008A870 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C575C281891380008A870 /* Block.swift */; };
 		935C57622819AB9C0008A870 /* IfBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C57612819AB9C0008A870 /* IfBlock.swift */; };
 		935C5767281A45200008A870 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C5766281A45200008A870 /* utils.swift */; };
 		935C576B281A49940008A870 /* globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C576A281A49940008A870 /* globals.swift */; };
-		935C576D281B38DB0008A870 /* Test2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C576C281B38DB0008A870 /* Test2View.swift */; };
 		935C57EE281F93180008A870 /* Procedure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C57ED281F93180008A870 /* Procedure.swift */; };
+		935C57F028234CF90008A870 /* CreateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C57EF28234CF90008A870 /* CreateRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,14 +52,13 @@
 		935C57432817B44C0008A870 /* My_ShortcutsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_ShortcutsUITests.swift; sourceTree = "<group>"; };
 		935C57452817B44C0008A870 /* My_ShortcutsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_ShortcutsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		935C5758281847DB0008A870 /* TextBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBlock.swift; sourceTree = "<group>"; };
-		935C575A28188E940008A870 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		935C575C281891380008A870 /* Block.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		935C57602818964B0008A870 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		935C57612819AB9C0008A870 /* IfBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfBlock.swift; sourceTree = "<group>"; };
 		935C5766281A45200008A870 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		935C576A281A49940008A870 /* globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globals.swift; sourceTree = "<group>"; };
-		935C576C281B38DB0008A870 /* Test2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test2View.swift; sourceTree = "<group>"; };
 		935C57ED281F93180008A870 /* Procedure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Procedure.swift; sourceTree = "<group>"; };
+		935C57EF28234CF90008A870 /* CreateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +109,7 @@
 		935C57272817B44B0008A870 /* My Shortcuts */ = {
 			isa = PBXGroup;
 			children = (
+				935C57602818964B0008A870 /* MyPlayground.playground */,
 				935C57282817B44B0008A870 /* My_ShortcutsApp.swift */,
 				935C5763281A42110008A870 /* Helper */,
 				935C57532817B48B0008A870 /* Models */,
@@ -149,11 +148,9 @@
 		935C57522817B4580008A870 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				935C57F128234F7B0008A870 /* Blocks */,
 				935C572A2817B44B0008A870 /* ContentView.swift */,
-				935C5758281847DB0008A870 /* TextBlock.swift */,
-				935C575A28188E940008A870 /* TestView.swift */,
-				935C57612819AB9C0008A870 /* IfBlock.swift */,
-				935C576C281B38DB0008A870 /* Test2View.swift */,
+				935C57EF28234CF90008A870 /* CreateRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,7 +160,6 @@
 			children = (
 				935C575C281891380008A870 /* Block.swift */,
 				935C57ED281F93180008A870 /* Procedure.swift */,
-				935C57602818964B0008A870 /* MyPlayground.playground */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,6 +171,15 @@
 				935C576A281A49940008A870 /* globals.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		935C57F128234F7B0008A870 /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				935C5758281847DB0008A870 /* TextBlock.swift */,
+				935C57612819AB9C0008A870 /* IfBlock.swift */,
+			);
+			path = Blocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,13 +313,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				935C5767281A45200008A870 /* utils.swift in Sources */,
-				935C575B28188E940008A870 /* TestView.swift in Sources */,
 				935C575D281891380008A870 /* Block.swift in Sources */,
 				935C57EE281F93180008A870 /* Procedure.swift in Sources */,
-				935C576D281B38DB0008A870 /* Test2View.swift in Sources */,
 				935C57622819AB9C0008A870 /* IfBlock.swift in Sources */,
 				935C576B281A49940008A870 /* globals.swift in Sources */,
 				935C5759281847DB0008A870 /* TextBlock.swift in Sources */,
+				935C57F028234CF90008A870 /* CreateRow.swift in Sources */,
 				935C572B2817B44B0008A870 /* ContentView.swift in Sources */,
 				935C57292817B44B0008A870 /* My_ShortcutsApp.swift in Sources */,
 			);

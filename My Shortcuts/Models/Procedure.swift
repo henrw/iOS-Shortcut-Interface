@@ -1,38 +1,36 @@
-//
-//  Procedure.swift
-//  My Shortcuts
-//
-//  Created by Henry Wu on 5/2/22.
-//
-
 import Foundation
 import SwiftUI
 
+// per shortcut info struct (wrapper of [block])
 class Procedure: ObservableObject {
     @Published var blocks = [Block]()
     
+    // Create new blocks
     func add(type: String){
-        blocks.append(Block(id: UUID(), type: type, text: [String](["", "", ""]), pairedIndex: blocks.count+1))
+        blocks.append(Block(id: UUID(), type: type, pairedIndex: blocks.count+1))
         if type == "If"{
-            blocks.append(Block(id: UUID(), type: "End", text: [String](["", "", ""]), pairedIndex: blocks.count-1))
+            blocks.append(Block(id: UUID(), type: "End", pairedIndex: blocks.count-1))
         }
     }
     
+    // Update indent param && Check Validity with "if-Stack"
     func updateIndent() -> Bool {
-        var indent: CGFloat = 0
-        var ifCount: Int = 0
+        var indent: CGFloat = indentStart
+        var ifIndices: [Int] = [Int]()
         for i in 0..<blocks.count{
             if blocks[i].type == "End" {
-                if ifCount == 0{
+                if ifIndices.count == 0{
                     return false
                 }
                 indent -= indentUnit
-                ifCount -= 1
+                let j: Int = ifIndices.popLast()!
+                blocks[j].pairedIndex = i
+                blocks[i].pairedIndex = j
             }
             blocks[i].indent = indent
             if blocks[i].type == "If"{
                 indent += indentUnit
-                ifCount += 1
+                ifIndices.append(i)
             }
         }
         return true

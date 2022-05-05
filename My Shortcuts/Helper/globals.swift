@@ -1,14 +1,16 @@
-//
-//  global.swift
-//  My Shortcuts
-//
-//  Created by Henry Wu on 4/28/22.
-//
-
 import Foundation
 import SwiftUI
 
-var blockWidth : [CGFloat] = [300, 250, 200]
-let backgroundRGB : Double = 240/255
-let backgroundColor : Color = Color(red: backgroundRGB, green: backgroundRGB, blue: backgroundRGB)
-let indentUnit : CGFloat = 50
+let backgroundColor : Color = Color(red: 240/255, green: 240/255, blue: 240/255)
+
+let indentUnit : CGFloat = 30
+let indentStart : CGFloat = 0
+
+let iconNameMap = [
+    "Text": "text.alignleft",
+    "If": "arrow.triangle.branch"
+]
+let iconColorMap = [
+    "Text": Color.yellow,
+    "If": Color.gray
+]

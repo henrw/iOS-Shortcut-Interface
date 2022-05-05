@@ -1,25 +1,15 @@
-//
-//  BlockView.swift
-//  My Shortcuts
-//
-//  Created by Henry Wu on 4/26/22.
-//
-
 import SwiftUI
 
-
 struct TextBlock: View {
-    //    @EnvironmentObject var procedure: Procedure
-    //    var index: Int
     @State var text : String = ""
     
     var body: some View {
         VStack{
             HStack{
-                Image(systemName: "text.alignleft")
+                Image(systemName: iconNameMap["Text"]!)
                     .padding(5)
                     .foregroundColor(Color.white)
-                    .background(Color.yellow)
+                    .background(iconColorMap["Text"])
                     .cornerRadius(5)
                 Text("Text")
                 Spacer()
@@ -27,8 +17,18 @@ struct TextBlock: View {
             
             Divider()
             
-            TextField("Text",text: $text)
-                .frame(height: 100, alignment: .top)
+            ZStack {
+                if self.text.isEmpty {
+                    TextEditor(text: .constant("Text"))
+                        .font(.body)
+                        .foregroundColor(.gray)
+                        .disabled(true)
+                }
+                TextEditor(text: $text)
+                    .font(.body)
+                    .opacity(self.text.isEmpty ? 0.25 : 1)
+            }
+            .frame(height: 60)
         }
         .padding()
         .background(Color.white)
