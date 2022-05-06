@@ -27,19 +27,32 @@ struct ContentView: View {
                 ScrollView{
                     LazyVStack(spacing: -20){
                         ForEach(procedure.blocks){ block in
-                            BlockView(type: block.type)
-                                .cornerRadius(10)
-                                .padding()
-                                .padding(.leading, block.indent)
-                                .onDrag({
-                                    procedure.currentBlock = block
-                                    return NSItemProvider(contentsOf: URL(string: "\(block.id)")!)!
-                                })
-                                .onDrop(of: [.url], delegate: DropViewDelegate(block: block, blocks: $procedure.blocks, current: $procedure.currentBlock))
-                                .overlay(
-                                    DeleteButton(block: block, onDelete: deleteBlock)
-                                    , alignment: .topTrailing)
-                            
+                            // Better approach required
+                            if block.type == "End"{
+                                BlockView(type: block.type)
+                                    .cornerRadius(10)
+                                    .padding()
+                                    .padding(.leading, block.indent)
+                                    .onDrag({
+                                        procedure.currentBlock = block
+                                        return NSItemProvider(contentsOf: URL(string: "\(block.id)")!)!
+                                    })
+                                    .onDrop(of: [.url], delegate: DropViewDelegate(block: block, blocks: $procedure.blocks, current: $procedure.currentBlock))
+                            }
+                            else{
+                                BlockView(type: block.type)
+                                    .cornerRadius(10)
+                                    .padding()
+                                    .padding(.leading, block.indent)
+                                    .onDrag({
+                                        procedure.currentBlock = block
+                                        return NSItemProvider(contentsOf: URL(string: "\(block.id)")!)!
+                                    })
+                                    .onDrop(of: [.url], delegate: DropViewDelegate(block: block, blocks: $procedure.blocks, current: $procedure.currentBlock))
+                                    .overlay(
+                                        DeleteButton(block: block, onDelete: deleteBlock)
+                                        , alignment: .topTrailing)
+                            }
                         }
                     }
                     
