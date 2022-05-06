@@ -39,8 +39,8 @@ struct IfBlock: View {
                 .cornerRadius(5)
                 Spacer()
             }
-            HStack{
-                if isParam() {
+            if isParam() {
+                HStack{
                     Menu(parameter) {
                         ForEach(parameterOpts, id: \.self){ opt in
                             Button(opt, action: {parameter = opt})
@@ -49,8 +49,9 @@ struct IfBlock: View {
                     .padding(3)
                     .background(/*@START_MENU_TOKEN@*//*@PLACEHOLDER=View@*/Color(hue: 0.548, saturation: 0.315, brightness: 0.981, opacity: 0.598)/*@END_MENU_TOKEN@*/)
                     .cornerRadius(5)
+                    
+                    Spacer()
                 }
-                Spacer()
             }
             
         }

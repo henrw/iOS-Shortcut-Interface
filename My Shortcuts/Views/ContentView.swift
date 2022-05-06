@@ -1,4 +1,5 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct ContentView: View {
     
@@ -16,36 +17,31 @@ struct ContentView: View {
             }
         }
         procedure.blocks.remove(atOffsets: offsetsCp)
-        _ = procedure.updateIndent()
-    }
-    
-    // Reorder Block(s)
-    // Revert if necessary
-    func moveBlock(from source: IndexSet, to destination: Int) {
-        let blocksCp = procedure.blocks
-        procedure.blocks.move(fromOffsets: source, toOffset: destination)
-        if (procedure.updateIndent() == false) {
-            procedure.blocks = blocksCp
-        }
+        _ = updateIndent(blocks: &procedure.blocks)
     }
     
     var body: some View {
         NavigationView{
             ZStack{
-                backgroundColor
-                VStack{
+                backgroundColor.ignoresSafeArea()
+                ScrollView{
                     LazyVStack(spacing: -20){
                         ForEach(procedure.blocks){ block in
                             BlockView(type: block.type)
                                 .cornerRadius(10)
                                 .padding()
                                 .padding(.leading, block.indent)
+                                .onDrag({
+                                    procedure.currentBlock = block
+                                    return NSItemProvider(contentsOf: URL(string: "\(block.id)")!)!
+                                })
+                                .onDrop(of: [.url], delegate: DropViewDelegate(block: block, blocks: $procedure.blocks, current: $procedure.currentBlock))
                                 .overlay(
                                     DeleteButton(block: block, onDelete: deleteBlock)
                                     , alignment: .topTrailing)
+                            
                         }
                     }
-                    
                     
                     Section(header: Text("Next Action Suggestions")
                                 .foregroundColor(Color.gray)
@@ -57,50 +53,26 @@ struct ContentView: View {
                     }
                 }
             }
-        }
-        
-        .navigationBarTitle("New Shortcut", displayMode: .inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button{
-                }label: {
-                    Image(systemName: "slider.horizontal.3").clipShape(Circle())
+            .navigationBarTitle("New Shortcut", displayMode: .inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button{
+                    }label: {
+                        Image(systemName: "slider.horizontal.3").clipShape(Circle())
+                    }
+                    .padding(.trailing, -10.0)
                 }
-                .padding(.trailing, -10.0)
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button{
-                    procedure.blocks.removeAll()
-                }label: {
-                    Image(systemName: "xmark.circle.fill")
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button{
+                        procedure.blocks.removeAll()
+                    }label: {
+                        Image(systemName: "xmark.circle.fill")
+                    }
                 }
             }
-        }
-    }
-}
-
-
-struct DeleteButton: View {
-    let block: Block
-    @EnvironmentObject var procedure: Procedure
-    let onDelete: (IndexSet) -> ()
-    
-    var body: some View {
-        VStack {
-            
-            Button(action: {
-                if let index = procedure.blocks.firstIndex(of: block) {
-                    self.onDelete(IndexSet(integer: index))
-                }
-            }) {
-                Image(systemName: "xmark.circle")
-            }
-            .offset(x: -20, y: 20)
-            
         }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

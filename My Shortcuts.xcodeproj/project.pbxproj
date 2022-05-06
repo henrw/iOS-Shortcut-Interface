@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		931D6F742824DAF100199E23 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D6F732824DAF100199E23 /* TestView.swift */; };
 		931D6F762825639800199E23 /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D6F752825639800199E23 /* BlockView.swift */; };
+		931D6F7828256B5500199E23 /* DropViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D6F7728256B5500199E23 /* DropViewDelegate.swift */; };
+		931D6F7A2825D62500199E23 /* DeleteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931D6F792825D62500199E23 /* DeleteButton.swift */; };
 		935C57292817B44B0008A870 /* My_ShortcutsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C57282817B44B0008A870 /* My_ShortcutsApp.swift */; };
 		935C572B2817B44B0008A870 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935C572A2817B44B0008A870 /* ContentView.swift */; };
 		935C572D2817B44C0008A870 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935C572C2817B44C0008A870 /* Assets.xcassets */; };
@@ -43,8 +44,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		931D6F732824DAF100199E23 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		931D6F752825639800199E23 /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
+		931D6F7728256B5500199E23 /* DropViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropViewDelegate.swift; sourceTree = "<group>"; };
+		931D6F792825D62500199E23 /* DeleteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteButton.swift; sourceTree = "<group>"; };
 		935C57252817B44B0008A870 /* My Shortcuts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Shortcuts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		935C57282817B44B0008A870 /* My_ShortcutsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = My_ShortcutsApp.swift; sourceTree = "<group>"; };
 		935C572A2817B44B0008A870 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		931D6F7B2825D63600199E23 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				935C57EF28234CF90008A870 /* CreateRow.swift */,
+				931D6F792825D62500199E23 /* DeleteButton.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		935C571C2817B44B0008A870 = {
 			isa = PBXGroup;
 			children = (
@@ -154,9 +165,8 @@
 			children = (
 				935C57F128234F7B0008A870 /* Blocks */,
 				935C572A2817B44B0008A870 /* ContentView.swift */,
-				935C57EF28234CF90008A870 /* CreateRow.swift */,
-				931D6F732824DAF100199E23 /* TestView.swift */,
 				931D6F752825639800199E23 /* BlockView.swift */,
+				931D6F7B2825D63600199E23 /* Helper */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				935C5766281A45200008A870 /* utils.swift */,
+				931D6F7728256B5500199E23 /* DropViewDelegate.swift */,
 				935C576A281A49940008A870 /* globals.swift */,
 			);
 			path = Helper;
@@ -319,13 +330,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				935C5767281A45200008A870 /* utils.swift in Sources */,
+				931D6F7828256B5500199E23 /* DropViewDelegate.swift in Sources */,
 				935C575D281891380008A870 /* Block.swift in Sources */,
 				931D6F762825639800199E23 /* BlockView.swift in Sources */,
 				935C57EE281F93180008A870 /* Procedure.swift in Sources */,
 				935C57622819AB9C0008A870 /* IfBlock.swift in Sources */,
 				935C576B281A49940008A870 /* globals.swift in Sources */,
 				935C5759281847DB0008A870 /* TextBlock.swift in Sources */,
-				931D6F742824DAF100199E23 /* TestView.swift in Sources */,
+				931D6F7A2825D62500199E23 /* DeleteButton.swift in Sources */,
 				935C57F028234CF90008A870 /* CreateRow.swift in Sources */,
 				935C572B2817B44B0008A870 /* ContentView.swift in Sources */,
 				935C57292817B44B0008A870 /* My_ShortcutsApp.swift in Sources */,

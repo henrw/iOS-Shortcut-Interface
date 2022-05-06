@@ -1,10 +1,3 @@
-//
-//  BlockView.swift
-//  My Shortcuts
-//
-//  Created by Henry Wu on 5/6/22.
-//
-
 import SwiftUI
 
 struct BlockView: View {
