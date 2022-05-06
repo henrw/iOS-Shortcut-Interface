@@ -31,58 +31,76 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            VStack{
-                List{
-                    ForEach(procedure.blocks){ block in
-                        if block.type == "Text"{
-                            TextBlock()
+            ZStack{
+                backgroundColor
+                VStack{
+                    LazyVStack(spacing: -20){
+                        ForEach(procedure.blocks){ block in
+                            BlockView(type: block.type)
+                                .cornerRadius(10)
+                                .padding()
                                 .padding(.leading, block.indent)
-                        }
-                        else if block.type == "If"{
-                            IfBlock()
-                                .padding(.leading, block.indent)
-                        }
-                        else if block.type == "End"{
-                            EndifBlock()
-                                .padding(.leading, block.indent)
+                                .overlay(
+                                    DeleteButton(block: block, onDelete: deleteBlock)
+                                    , alignment: .topTrailing)
                         }
                     }
-                    .onMove(perform: moveBlock)
-                    .onDelete(perform: deleteBlock)
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                }
-                .environment(\.editMode, $editMode)
-                
-                Section(header: Text("Next Action Suggestions")
-                            .foregroundColor(Color.gray)
-                ){
-                    VStack{
-                        CreateRow(type: "If")
-                        CreateRow(type: "Text")
+                    
+                    
+                    Section(header: Text("Next Action Suggestions")
+                                .foregroundColor(Color.gray)
+                    ){
+                        VStack{
+                            CreateRow(type: "If")
+                            CreateRow(type: "Text")
+                        }
                     }
                 }
             }
-            .navigationBarTitle("New Shortcut", displayMode: .inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button{
-                    }label: {
-                        Image(systemName: "slider.horizontal.3").clipShape(Circle())
-                    }
-                    .padding(.trailing, -10.0)
+        }
+        
+        .navigationBarTitle("New Shortcut", displayMode: .inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button{
+                }label: {
+                    Image(systemName: "slider.horizontal.3").clipShape(Circle())
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button{
-                        procedure.blocks.removeAll()
-                    }label: {
-                        Image(systemName: "xmark.circle.fill")
-                    }
+                .padding(.trailing, -10.0)
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button{
+                    procedure.blocks.removeAll()
+                }label: {
+                    Image(systemName: "xmark.circle.fill")
                 }
             }
         }
     }
 }
+
+
+struct DeleteButton: View {
+    let block: Block
+    @EnvironmentObject var procedure: Procedure
+    let onDelete: (IndexSet) -> ()
+    
+    var body: some View {
+        VStack {
+            
+            Button(action: {
+                if let index = procedure.blocks.firstIndex(of: block) {
+                    self.onDelete(IndexSet(integer: index))
+                }
+            }) {
+                Image(systemName: "xmark.circle")
+            }
+            .offset(x: -20, y: 20)
+            
+        }
+    }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

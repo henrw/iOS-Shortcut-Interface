@@ -32,7 +32,6 @@ struct TextBlock: View {
         }
         .padding()
         .background(Color.white)
-        .cornerRadius(10)
     }
 }
 

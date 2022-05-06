@@ -56,7 +56,6 @@ struct IfBlock: View {
         }
         .padding(.all, 12.0)
         .background(Color.white)
-        .cornerRadius(10)
     }
 }
 
@@ -91,7 +90,6 @@ struct EndifBlock: View {
         }
         .padding(.all, 12.0)
         .background(Color.white)
-        .cornerRadius(10)
     }
 }
 
