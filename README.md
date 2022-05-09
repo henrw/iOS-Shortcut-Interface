@@ -6,4 +6,4 @@ Demo Links:
 
 TODO:
 - more blocks to implement
-- improve accessibility in terms of different medias (audio, gestures)
+- improve accessibility in terms of different media (audio, gestures)
